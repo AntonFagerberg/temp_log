@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Temperature control</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
+  <link rel="stylesheet" href="public/main.css" type="text/css" media="screen, projection">
+</head>
+<body>
+  <div id="content">
+    <h1>Temperature Logger</h1>
+    <h2>Current temperature</h2>
+    <span id="current"></span>
+    <h2>Hour</h2>
+    <canvas id="minuteChart" width="1000" height="300"></canvas>
+    <h2>Today</h2>
+    <canvas id="todayChart" width="1000" height="300"></canvas>
+    <h2>Yesterday</h2>
+    <canvas id="yesterdayChart" width="1000" height="300"></canvas>
+    <h2>Weekly average</h2>
+    <canvas id="weekChart" width="1000" height="300"></canvas>
+    <h2>Monthly average</h2>
+    <canvas id="monthChart" width="1000" height="300"></canvas>
+  </div>
+  
+  <script type="text/javascript" src="public/main.js"></script>
+</body>
+</html>
