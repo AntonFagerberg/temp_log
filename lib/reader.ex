@@ -20,7 +20,7 @@ defmodule TempLog.Reader do
       file = base_dir <> sensor <> "/w1_slave"
       data = File.read!(file)
       [_all, temp] = Regex.run(~r/t=(\d+)/, data)
-      Repo.insert %TempLog.Entry{temperature: temp, sensor: sensor}
+      Repo.insert %TempLog.Entry{temperature: String.to_integer(temp), sensor: sensor}
     end)
 
     :timer.sleep(60_000) # Sleep 1 min before reading next value
