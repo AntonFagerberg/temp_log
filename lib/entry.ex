@@ -4,7 +4,7 @@ defmodule TempLog.Entry do
   # weather is the DB table
   schema "entry" do
     field :temperature, :integer, null: false
-    field :timestamp, :datetime, null: false, default: :calendar.local_time
+    field :timestamp, :datetime, null: false
     field :sensor, :string, null: false, size: 40
   end
 end
