@@ -12,48 +12,56 @@ defmodule TempLog.API do
     |> send_resp(200, template)
   end
   
-  get "/api/current" do
-    json_response = TempLog.Query.current |> Poison.encode!
-    
-    conn
-    |> put_resp_header("content-type", "application/json")
-    |> send_resp(200, json_response)
-  end
-    
-  get "/api/minute" do
-    json_response = TempLog.Query.minute |> Poison.encode!
-    
-    conn
-    |> put_resp_header("content-type", "application/json")
-    |> send_resp(200, json_response)
-  end
-    
-  get "/api/today" do
-    json_response = TempLog.Query.today |> Poison.encode!
-    
-    conn
-    |> put_resp_header("content-type", "application/json")
-    |> send_resp(200, json_response)
-  end
-    
-  get "/api/yesterday" do
-    json_response = TempLog.Query.yesterday |> Poison.encode!
+  get "/api/sensors" do
+    json_response = TempLog.Query.sensors |> Poison.encode!
     
     conn
     |> put_resp_header("content-type", "application/json")
     |> send_resp(200, json_response)
   end
   
-  get "/api/week" do
-    json_response = TempLog.Query.week |> Poison.encode!
+  get "/api/:sensor/current" do
+    json_response = TempLog.Query.current(sensor) |> Poison.encode!
+    
+    conn
+    |> put_resp_header("content-type", "application/json")
+    |> send_resp(200, json_response)
+  end
+    
+  get "/api/:sensor/minute" do
+    json_response = TempLog.Query.minute(sensor) |> Poison.encode!
+    
+    conn
+    |> put_resp_header("content-type", "application/json")
+    |> send_resp(200, json_response)
+  end
+    
+  get "/api/:sensor/today" do
+    json_response = TempLog.Query.today(sensor) |> Poison.encode!
+    
+    conn
+    |> put_resp_header("content-type", "application/json")
+    |> send_resp(200, json_response)
+  end
+    
+  get "/api/:sensor/yesterday" do
+    json_response = TempLog.Query.yesterday(sensor) |> Poison.encode!
     
     conn
     |> put_resp_header("content-type", "application/json")
     |> send_resp(200, json_response)
   end
   
-  get "/api/month" do
-    json_response = TempLog.Query.month |> Poison.encode!
+  get "/api/:sensor/week" do
+    json_response = TempLog.Query.week(sensor) |> Poison.encode!
+    
+    conn
+    |> put_resp_header("content-type", "application/json")
+    |> send_resp(200, json_response)
+  end
+  
+  get "/api/:sensor/month" do
+    json_response = TempLog.Query.month(sensor) |> Poison.encode!
     
     conn
     |> put_resp_header("content-type", "application/json")
