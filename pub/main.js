@@ -20,12 +20,12 @@
       <h2>Monthly average</h2>\
       <canvas id="monthChart" width="1000" height="300"></canvas>'
     );
-    
+
     (function () {
       function tempFormat(temps) {
         return temps.map(function (temp) {
           // My sensor has +-0.5 degrees precision.
-          return Math.round(2 * temp / 1000) / 2;
+          return (Math.round(2 * temp / 1000) / 2).toFixed(1);
         });
       }
 
@@ -34,7 +34,7 @@
           return ("0" + hour).substr(-2, 2);
         });
       }
-      
+
       $.ajax("/api/" + sensor + "/current").done(function (response) {
         $("#current").empty().text(
           tempFormat(response.temp).reduce(function(_acc, temp) {
@@ -42,7 +42,7 @@
           }, "?")
         );
       });
-      
+
       $.ajax("/api/" + sensor + "/minute").done(function (response) {
         var ctx = document.getElementById("minuteChart").getContext("2d");
         var data = {
@@ -102,7 +102,7 @@
         };
         var myLineChart = new Chart(ctx).Line(data);
       });
-      
+
       $.ajax("/api/" + sensor + "/week").done(function (response) {
         var ctx = document.getElementById("weekChart").getContext("2d");
         var data = {
@@ -122,18 +122,18 @@
         };
         var myLineChart = new Chart(ctx).Line(data);
       });
-      
+
       $.ajax("/api/" + sensor + "/month").done(function (response) {
         monthNames = [
           "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"
         ];
-        
+
         function monthFormat(months) {
           return months.map(function (month) {
             return monthNames[month - 1];
           });
         }
-        
+
         var ctx = document.getElementById("monthChart").getContext("2d");
         var data = {
             labels: monthFormat(response.month),
@@ -154,7 +154,7 @@
       });
     })();
   };
-  
+
   $.ajax("/api/sensors").done(function (response) {
     $("#sensors").html(
       response.sensors.reduce(function (acc, sensor) {
