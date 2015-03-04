@@ -24,7 +24,8 @@
     (function () {
       function tempFormat(temps) {
         return temps.map(function (temp) {
-          return (temp / 1000).toFixed(1);
+          // My sensor has +-0.5 degrees precision.
+          return Math.round(2 * temp / 1000) / 2;
         });
       }
 
@@ -36,8 +37,8 @@
       
       $.ajax("/api/" + sensor + "/current").done(function (response) {
         $("#current").empty().text(
-          response.temp.reduce(function(_acc, temp) {
-            return (temp / 1000).toFixed(1) + "°C";
+          tempFormat(response.temp).reduce(function(_acc, temp) {
+            return temp + "°C";
           }, "?")
         );
       });
