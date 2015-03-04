@@ -6,10 +6,8 @@ defmodule TempLog.API do
   plug :dispatch
   
   get "/" do
-    template = EEx.eval_file("lib/index.eex")
-    
-    conn
-    |> send_resp(200, template)
+    template = EEx.eval_file("lib/templates/index.eex")
+    send_resp(conn, 200, template)
   end
   
   get "/api/sensors" do
@@ -66,5 +64,9 @@ defmodule TempLog.API do
     conn
     |> put_resp_header("content-type", "application/json")
     |> send_resp(200, json_response)
+  end
+  
+  match _ do
+   send_resp(conn, 404, "oops")
   end
 end

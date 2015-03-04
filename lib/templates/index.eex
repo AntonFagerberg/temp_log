@@ -10,12 +10,9 @@
 <body>
   <div id="content">
     <div id="sensors"></div>
-    <h1>Temperature Logger</h1>
-    <h2>Current temperature</h2>
     <div id="graphs">
     </div>
   </div>
-  
   <script type="text/javascript" src="public/main.js"></script>
 </body>
 </html>

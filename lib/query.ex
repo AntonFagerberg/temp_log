@@ -34,7 +34,7 @@ defmodule TempLog.Query do
         """, [sensor]
       )
       
-      %{temp: elem(hd(result[:rows]), 0)}
+      %{temp: Enum.map(result[:rows], &(elem(&1, 0)))}
   end
   
   def minute(sensor) do
