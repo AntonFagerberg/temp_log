@@ -3,7 +3,7 @@ TempLog
 
 This is a project which reads data from an arbitrary number of sensors from a Raspberry Pi, stores them in a database and provides an API to query it + a small web interface with graphs.
 
-See more info on [http://www.antonfagerberg.com/projects/temperature-raspberry-pi/](my homepage).
+See more info on [my homepage](http://www.antonfagerberg.com/projects/temperature-raspberry-pi/).
 
 ## License
 This program is free software: you can redistribute it and/or modify
