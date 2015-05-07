@@ -3,7 +3,7 @@ defmodule TempLog.Entry do
 
   schema "entry" do
     field :temperature, :integer, null: false
-    field :timestamp, :datetime, null: false
+    field :timestamp, Ecto.DateTime, null: false
     field :sensor, :string, null: false, size: 40
   end
 end

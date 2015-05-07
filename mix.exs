@@ -24,10 +24,10 @@ defmodule TempLog.Mixfile do
   defp deps do
     [
       {:cowboy, "~> 1.0"},
-      {:plug, "~> 0.10"},
-      {:poison, "~> 1.3"},
-      {:postgrex, "0.7.0"},
-      {:ecto, "~> 0.8.1"}
+      {:plug, "~> 0.12"},
+      {:poison, "~> 1.4"},
+      {:postgrex, "~> 0.8"},
+      {:ecto, "~> 0.11"}
     ]
   end
 end

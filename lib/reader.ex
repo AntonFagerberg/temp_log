@@ -23,7 +23,7 @@ defmodule TempLog.Reader do
       Repo.insert %TempLog.Entry{
         temperature: String.to_integer(temp),
         sensor: sensor,
-        timestamp: :calendar.local_time
+        timestamp: Ecto.DateTime.local
       }
     end)
 
