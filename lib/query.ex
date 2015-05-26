@@ -10,7 +10,7 @@ defmodule TempLog.Query do
           sensor 
         FROM 
           entry;
-        """, []
+        """, [], timeout: :infinity
       )
       
       %{sensors: Enum.map(result[:rows], &(elem(&1, 0)))}
@@ -31,7 +31,7 @@ defmodule TempLog.Query do
         LIMIT
           1
         ;
-        """, [sensor]
+        """, [sensor], timeout: :infinity
       )
       
       %{temp: Enum.map(result[:rows], &(elem(&1, 0)))}
@@ -57,7 +57,7 @@ defmodule TempLog.Query do
         ORDER BY
           minute
         ;
-        """, [sensor]
+        """, [sensor], timeout: :infinity
       )
       
       Enum.reduce(result[:rows], %{minute: [], temp: []}, fn({minute, temp}, dict) ->
@@ -83,7 +83,7 @@ defmodule TempLog.Query do
         ORDER BY
           month
         ;
-        """, [sensor]
+        """, [sensor], timeout: :infinity
       )
       
       Enum.reduce(result[:rows], %{month: [], temp: []}, fn({month, temp}, dict) ->
@@ -109,7 +109,7 @@ defmodule TempLog.Query do
         ORDER BY
           week
         ;
-        """, [sensor]
+        """, [sensor], timeout: :infinity
       )
       
       Enum.reduce(result[:rows], %{week: [], temp: []}, fn({week, temp}, dict) ->
@@ -137,7 +137,7 @@ defmodule TempLog.Query do
         ORDER BY
           hour
         ;
-        """, [sensor]
+        """, [sensor], timeout: :infinity
       )
     
     Enum.reduce(result[:rows], %{hour: [], temp: []}, fn({hour, temp}, dict) ->
@@ -165,7 +165,7 @@ defmodule TempLog.Query do
         ORDER BY
           hour
         ;
-        """, [sensor]
+        """, [sensor], timeout: :infinity
       )
     
     Enum.reduce(result[:rows], %{hour: [], temp: []}, fn({hour, temp}, dict) ->
